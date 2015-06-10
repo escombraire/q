@@ -1,0 +1,23 @@
+<div>
+    <% var i;
+        for( i=0; i<quizes.length; i++) {
+    %>
+            <span>
+            <a href="quizes/<%= quizes[i].id %>">
+                <%= quizes[i].pregunta %>
+            </a>
+            </span>
+            <br />
+        <% } %>
+</div>
+<div>
+  <p><h3>Buscar preguntas</h3></p>
+  <p>
+    <form action="/quizes" method="get">
+      <label for id="search">Pregunta?: </label>
+      <input type="text" name="search" id="search" placeHolder="Pregunta(s) a buscar" />
+      <br />
+      <input type="submit" value="Enviar" />
+    </form>
+  </p>
+</div>
