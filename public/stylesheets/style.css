@@ -8,6 +8,8 @@ a {
   color: #00B7FF;
 }
 
+#ErrorMsg {color: magenta;}
+
 #page-wrap { margin: 2% auto; color: white; }
 
 #page-wrap > .main {
@@ -19,13 +21,13 @@ a {
 
 section >div { padding: 20px;}
 
-header, nav, section { 
+header, nav, section {
     background: #eee;
     text-align: center;
 }
 
 footer {
-    background: #eee; 
+    background: #eee;
     text-align: center;
 }
 
