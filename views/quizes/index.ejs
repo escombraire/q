@@ -10,14 +10,18 @@
             <br />
         <% } %>
 </div>
+<div><hr /></div>
 <div>
   <p><h3>Buscar preguntas</h3></p>
   <p>
     <form action="/quizes" method="get">
       <label for id="search">Pregunta?: </label>
       <input type="text" name="search" id="search" placeHolder="Pregunta(s) a buscar" />
-      <br />
       <input type="submit" value="Enviar" />
     </form>
   </p>
 </div>
+<div><hr /></div>
+<p>
+  <a href="/quizes/new"><button type="button">Crear Pregunta</button></a>
+</p>
