@@ -4,5 +4,13 @@
 <label for="resp" class="rem">Respuesta</label>
 <input type="text" id="resp" name="quiz[respuesta]" value="<%= quiz.respuesta %>"/>
 <br />
+<% var temas = ["otro", "humanidades", "ocio", "ciencia", "tecnología"]; %>
+Tipo de pregunta:
+<select name="quiz[tema]">
+<% for (var j = 0; j< temas.length; j++) { %>
+    <option value="<%= temas[j] %>"><%= temas[j] %></option>
+<% } %>
+</select>
+<br />
 <a href="/quizes"><button type="button">Cancelar</button></a>
 <input type="submit" value="Salvar" />
