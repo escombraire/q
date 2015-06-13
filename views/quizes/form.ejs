@@ -7,8 +7,10 @@
 <% var temas = ["otro", "humanidades", "ocio", "ciencia", "tecnología"]; %>
 Tipo de pregunta:
 <select name="quiz[tema]">
+<% var selecc %>
 <% for (var j = 0; j< temas.length; j++) { %>
-    <option value="<%= temas[j] %>"><%= temas[j] %></option>
+  <% if (quiz.tema === temas[j]) {selecc="selected"} else {selecc=""} %>
+    <option value="<%= temas[j] %>" <%= selecc %>><%= temas[j] %></option>
 <% } %>
 </select>
 <br />

@@ -80,6 +80,7 @@ exports.update = function(req, res){
 
     req.quiz.pregunta = req.body.quiz.pregunta;
     req.quiz.respuesta = req.body.quiz.respuesta;
+    req.quiz.tema = req.body.quiz.tema;
 
     console.log("QUIZ ID: "+req.quiz.id);
     console.log("QUIZ PREGUNTA "+req.quiz.pregunta);
@@ -91,7 +92,7 @@ exports.update = function(req, res){
           if (err){
             res.render('quiz/edit',{quiz:req.quiz, errors: error});
           }else{
-            req.quiz.save({fields:["pregunta", "respuesta"]}).
+            req.quiz.save({fields:["pregunta", "respuesta", "tema"]}).
             then(
               function(){ res.redirect('/quizes');}
             );
