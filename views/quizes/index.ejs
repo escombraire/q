@@ -17,7 +17,7 @@
             </td>
             <td>
             <form action="/quizes/<%= quizes[i].id %>?_method=delete" method="post">
-              <button type="submit" onClick='return prompt("Borrar pregunta: "+<%= quizes[i].id %>"' >
+              <button type="submit" onClick='return confirm("Borrar pregunta");' >
                 Borrar
               </button>
             </form>
