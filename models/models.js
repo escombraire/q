@@ -28,10 +28,11 @@ seque.sync().then(function(){
         if (count === 0){
             Quiz.create(
                 {pregunta:'Capital de Portugal',
-                 respuesta: 'Lisboa'}
+                 respuesta: 'Lisboa',
+                 tema: 'otro'}
             );
             Quiz.create(
-                {pregunta: "Capital de Italia", respuesta: 'Roma'}
+                {pregunta: "Memoria de un ordenador", respuesta: 'RAM', tema: 'tecnología'}
             ).then(function(){
                 console.log('Base de datas inicialitzada');
             });
