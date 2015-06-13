@@ -13,6 +13,12 @@ exports.load = function(req, res, next, quizId){
   ).catch(function(error){next(error);});
 };
 
+exports.modificar = function(req, res){
+  var quiz = req.quiz;
+  res.render('quizes/edit', {quiz:quiz, errors:[]});
+};
+
+
 exports.show = function(req, res){
         res.render('quizes/show',{quiz: req.quiz, errors: []});
 };
@@ -21,13 +27,16 @@ exports.index = function(req, res){
     console.log("SEARCH: "+req.query.search);
     if (req.query.search === undefined || req.query.search === ''){
         models.Quiz.findAll().then(function(quizes){
-        res.render('quizes/index.ejs',{quizes: quizes, errors:[]})});
+        res.render('quizes/index.ejs',{quizes: quizes, errors:[]})}
+      ).catch(function(error){next(error);});
     }else{
       var search = '%'+req.query.search+'%';
       search = search.replace(' ','%');
       console.log('MI SEARCH'+search);
-      models.Quiz.findAll({where: ["pregunta like ?", search], order: ["pregunta"]}).then(function(quizes){
-      res.render('quizes/index.ejs',{quizes: quizes, errors:[]})});
+      models.Quiz.findAll({where: ["pregunta like ?", search], order: ["pregunta"]}).
+        then(function(quizes){
+          res.render('quizes/index.ejs',{quizes: quizes, errors:[]})}
+        ).catch(function(error){next(error);});
     }
 
 }
@@ -51,6 +60,8 @@ exports.new = function(req, res){
   res.render('quizes/new', {quiz:quiz, errors:[]});
 };
 
+
+
 exports.create = function(req, res){
   var quiz = models.Quiz.build(req.body.quiz);
 
@@ -64,3 +75,28 @@ exports.create = function(req, res){
     } //fin if else
   }); //fin validate
 };
+
+exports.update = function(req, res){
+    console.log("HHHHHHHHHHHHHHHHHHHHHH");
+    req.quiz.pregunta = req.body.quiz.pregunta;
+    req.quiz.respuesta = req.body.quiz.respuesta;
+
+    console.log("QUIZ ID: "+req.quiz.id);
+    console.log("QUIZ PREGUNTA "+req.quiz.pregunta);
+    console.log("Quiz RESPUESTA "+req.quiz.respuesta);
+
+    req.quiz.validate().
+      then(
+        function(err){
+          if (err){
+            res.render('quiz/edit',{quiz:req.quiz, errors: error});
+          }else{
+            req.quiz.save({fields:["pregunta", "respuesta"]}).
+            then(
+              function(){ res.redirect('/quizes');}
+            );
+          };
+        }
+
+      );
+  };

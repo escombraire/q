@@ -19,7 +19,7 @@ a {
     color: black;
 }
 
-section >div { padding: 20px;}
+section >div { padding-left: 20px;}
 
 header, nav, section {
     background: #eee;
