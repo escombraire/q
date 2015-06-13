@@ -1,17 +1,28 @@
 <div>
+  <table>
     <% var i;
         for( i=0; i<quizes.length; i++) {
     %>
-            <span>
+            <tr></tr>
+            <td>
             <a href="quizes/<%= quizes[i].id %>">
                 <%= quizes[i].pregunta %>
             </a>
+            </td>
+            <td>
             <a href="quizes/<%= quizes[i].id %>/edit">
               <button type="button">Editar</button>
             </a>
-            </span>
-            <br />
+            </td>
+            <td>
+            <form action="/quizes/<%= quizes[i].id %>?_method=delete" method="post">
+              <button type="submit" onClick='return prompt("Borrar pregunta: "+<%= quizes[i].id %>"' >
+                Borrar
+              </button>
+            </form>
+            </td>
         <% } %>
+  </table>
 </div>
 <div><hr /></div>
 <div>
@@ -26,5 +37,6 @@
 </div>
 <div><hr /></div>
 <p>
+  <strong>Crear nueva Pregunta: </strong>
   <a href="/quizes/new"><button type="button">Crear Pregunta</button></a>
 </p>
