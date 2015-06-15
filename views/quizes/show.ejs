@@ -5,3 +5,13 @@
     <input type="submit" value="Pulsar" />
 </form>
 </p>
+<p><a href="/quizes/<%= quiz.id %>/comentarios/new"><button type="button">Añadir comentario</button></a></p>
+
+<p>
+<strong>Comentarios</strong><br />
+<ul>
+<% for(var i in quiz.Comentarios){ %>
+  <li><%= quiz.Comentarios[i].texto %></li>
+<% } %>
+</ul>
+</p>

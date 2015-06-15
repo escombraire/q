@@ -21,7 +21,13 @@ var seque = new Sequelize(DB_name,user,pwd, {
   });
 
 var Quiz = seque.import(path.join(__dirname,'quiz'));
+var Comentarios = seque.import(path.join(__dirname,'comentarios'));
+
+Comentarios.belongsTo(Quiz);
+Quiz.hasMany(Comentarios);
+
 exports.Quiz = Quiz;
+exports.Comentarios = Comentarios;
 
 seque.sync().then(function(){
     Quiz.count().then(function(count){
